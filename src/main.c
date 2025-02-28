@@ -1,18 +1,40 @@
+
 #include <avr/io.h>
 #include <util/delay.h>
+#include <motor_movement.h>
 
-int main(void) {
-    // Set pin 13 (PB5) as an output
-    DDRB |= (1 << DDB5);
+void setup(void)
+{
+    init_io();
+    init_timer0_pwm();
+}
 
-    while (1) {
-        // Turn the LED on (set PB5 high)
-        PORTB |= (1 << PORTB5);
-        _delay_ms(1000); // Wait for 1 second
+void loop(void)
+{
+// Forward for 2s
+    move_forward();
+            
+    // Backward for 2s
+    move_backward();
 
-        // Turn the LED off (set PB5 low)
-        PORTB &= ~(1 << PORTB5);
-        _delay_ms(1000); // Wait for 1 second
+    // Turn left for 2s
+    turn_left();
+
+    // Turn right for 2s
+    turn_right();
+
+    // Stop for 2s
+    stop_motors();
+}
+
+int main(void)
+{
+
+    setup();
+
+    while (1)
+    {
+       loop(); 
     }
 
     return 0;
