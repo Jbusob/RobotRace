@@ -40,9 +40,9 @@ void move_forward(void)
 
     // PWM duty cycles (example: 55 out of 255)
     OCR0B = 200;  // Left motor (OC0B)
-    OCR0A = 190;  // Right motor (OC0A)
+    OCR0A = 187;  // Right motor (OC0A)
 
-    _delay_ms(4000);
+    _delay_ms(3000);
 }
 
 void move_backward(void)
@@ -52,10 +52,10 @@ void move_backward(void)
     MR_Ctrl_PORT &= ~(1 << MR_Ctrl_PIN);
 
     // PWM duty cycles (example: 200 out of 255)
-    OCR0B = 55; // Left motor
-    OCR0A = 55; // Right motor
+    OCR0B = 40; // Left motor
+    OCR0A = 70; // Right motor
 
-    _delay_ms(4000);
+    _delay_ms(3000);
 }
 
 void turn_left(void)
